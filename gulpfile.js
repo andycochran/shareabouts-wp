@@ -34,6 +34,14 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./assets/js'))
 });
 
+// Copy Leaflet
+gulp.task('leaflet', function() {
+  return gulp.src([
+      './bower_components/leaflet/dist/leaflet.js'
+    ])
+    .pipe(gulp.dest('./assets/js'))
+});
+
 // Concat, minify Foundation's JavaScript
 gulp.task('foundation-js', function() {
   return gulp.src([
@@ -78,6 +86,7 @@ gulp.task('default', function() {
   gulp.start('styles');
   gulp.start('scripts');
   gulp.start('foundation-js');
+  gulp.start('leaflet');
 });
 
 // Watch files for changes

@@ -1,7 +1,13 @@
 /*--------------------------------------------------
-  Import foundation before your custom styles
+  Import Foundation before your custom styles
 --------------------------------------------------*/
 @import "foundation";
+
+
+/*--------------------------------------------------
+  Import Leaflet from bower_components
+--------------------------------------------------*/
+@import "../../bower_components/leaflet/dist/leaflet.css";
 
 
 /*--------------------------------------------------
@@ -30,6 +36,9 @@
   box-shadow: 0 -0.25rem 0.25rem 0 rgba(0,0,0,0.1);
 }
 
+#map {
+  height: 500px;
+}
 
 /*--------------------------------------------------
   Comments & Forms
