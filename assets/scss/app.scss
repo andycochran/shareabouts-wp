@@ -1,48 +1,170 @@
 /*--------------------------------------------------
   Import Foundation before your custom styles
 --------------------------------------------------*/
+
 @import "foundation";
 
 
 /*--------------------------------------------------
   Import Leaflet from bower_components
 --------------------------------------------------*/
+
 @import "../../bower_components/leaflet/dist/leaflet.css";
 
 
 /*--------------------------------------------------
   Global site layout
 --------------------------------------------------*/
-.site-header {
+
+$site-header-height: 5.75rem;
+$site-footer-height: 3rem;
+
+body {
+  min-height: 100%;
+  background-color: $light-gray;
+}
+html, body {
+  @include breakpoint(medium) {
+    height: 100%;
+    position: relative;
+  }
+}
+
+#site-header {
   padding: $global-margin 0;
-  box-shadow: 0 0.25rem 0.25rem 0 rgba(0,0,0,0.1);
+  box-shadow: 0 rem-calc(6) 0 0 rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 2;
+  background-color: $light-gray;
+  @include breakpoint(medium) {
+    height: $site-header-height;
+  }
 }
 
-.site-title {
-  font-size: rem-calc(24);
-  font-weight: $global-weight-bold;
+#site-body {
+  @include clearfix;
+  position: relative;
+  z-index: 1;
+  background-color: $white;
+  @include breakpoint(medium) {
+    position: absolute;
+    top: $site-header-height;
+    right: auto;
+    bottom: $site-footer-height;
+    left: 0;
+    width: 100%;
+    overflow: scroll;
+  }
 }
 
-.site-description {
-  display: block;
-}
-
-.site-container {
+#site-footer {
   padding: $global-margin*2 0;
+  box-shadow: 0 rem-calc(-6) 0 0 rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 2;
+  background-color: $light-gray;
+  @include breakpoint(medium) {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $site-footer-height;
+    padding: $global-margin/2 0;
+    overflow: hidden;
+  }
 }
 
-.site-footer {
-  padding: $global-margin*2 0;
-  box-shadow: 0 -0.25rem 0.25rem 0 rgba(0,0,0,0.1);
+#content {
+  position: relative;
+  z-index: 2;
+  // padding-top: $global-margin;
+  // padding-bottom: $global-margin;
+  @include breakpoint(medium) {
+    float: left;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    box-shadow: rem-calc(-6) 0 0 0 rgba(0,0,0,0.15);
+  }
+  @include breakpoint(large) {
+    width: 40%;
+  }
+}
+
+#map-container {
+  position: relative;
+  z-index: 1;
+  @include breakpoint(medium) {
+    float: left;
+    width: 50%;
+    height: 100%;
+  }
+  @include breakpoint(large) {
+    width: 60%;
+  }
 }
 
 #map {
+  position: relative;
+  z-index: 2;
   height: 500px;
+  @include breakpoint(medium) {
+    height: 100%;
+  }
 }
+
+#add-place {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  @include breakpoint(medium) {
+    width: auto;
+    position: absolute;
+    left: $global-margin;
+    bottom: $global-margin;
+    right: $global-margin;
+    margin: 0;
+  }
+}
+
+
+/*--------------------------------------------------
+  Typography
+--------------------------------------------------*/
+
+.site-title {
+  display: inline-block;
+  font-size: rem-calc(24);
+  @include breakpoint(medium) {
+    font-size: rem-calc(40);
+  }
+}
+
+.site-description {
+  display: inline-block;
+}
+
+.shareabouts-font {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+}
+
+.colophon {
+  p {
+    font-size: rem-calc(12);
+  }
+  .shareabouts-font {
+    font-size: 1.5em;
+  }
+}
+
 
 /*--------------------------------------------------
   Comments & Forms
 --------------------------------------------------*/
+
 .post-comments {}
 .commentlist {
   @extend .no-bullet;

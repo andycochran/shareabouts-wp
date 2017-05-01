@@ -1,8 +1,10 @@
 jQuery(document).foundation();
 
-var map = L.map('map').setView([38.2431627,-85.7567134], 12);
+var map = L.map('map', {
+  scrollWheelZoom: false
+}).setView([38.2431627,-85.7567134], 12);
 
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('http://tile-c.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
   maxZoom: 19,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
