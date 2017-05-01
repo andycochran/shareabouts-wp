@@ -1,0 +1,15 @@
+{
+  "name": "shareabouts-wp",
+  "description": "Shareabouts is an online mapping tool for crowdsourcing public input about places. Easily drop pins on a map and have discussions about those places.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "foundation-sites": "~6.3.1",
+    "what-input": "~4.0.3",
+    "motion-ui": "~1.1.0"
+  }
+}
