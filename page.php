@@ -3,21 +3,21 @@
   <div class="row">
     <div class="columns">
 
-			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-        	<header class="page-header">
-        		<h1 class="page-title"><?php the_title(); ?></h1>
-        	</header>
+          <header class="page-header">
+            <h1 class="page-title"><?php the_title(); ?></h1>
+          </header>
 
           <section class="page-content">
-      	    <?php the_content(); ?>
-      	    <?php wp_link_pages(); ?>
-        	</section>
+            <?php the_content(); ?>
+            <?php wp_link_pages(); ?>
+          </section>
 
-        	<footer class="page-footer">
-        	</footer>
+          <footer class="page-footer">
+          </footer>
 
         </article>
 

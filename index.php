@@ -9,17 +9,17 @@
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-        	<header class="post-header">
-        		<h2 class="post-title"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-        	</header>
+          <header class="post-header">
+            <h2 class="post-title"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+          </header>
 
-        	<section class="post-content">
-        		<?php the_excerpt(); ?>
-        	</section>
+          <section class="post-content">
+            <?php the_excerpt(); ?>
+          </section>
 
-        	<footer class="post-footer">
+          <footer class="post-footer">
             <p class="tags"><?php the_tags(); ?></p>
-        	</footer>
+          </footer>
 
         </article>
 
