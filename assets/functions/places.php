@@ -117,12 +117,17 @@ function get_shareabouts_places() {
   );
 
   foreach ( $posts as $post ) {
+
+    $latlng = $post->place_latlng;
+    $latlng = explode(',', $latlng);
+    $latlng = array_reverse($latlng);
+
     $feature = array(
       'id' => $post->ID,
       'type' => 'Feature',
       'geometry' => array(
           'type' => 'Point',
-          'coordinates' => array($post->place_latlng)
+          'coordinates' => $latlng
       ),
       'properties' => array(
           'title' => $post->post_title,
@@ -137,7 +142,7 @@ function get_shareabouts_places() {
 }
 
 add_action( 'rest_api_init', function () {
-  register_rest_route( 'shareabouts/v1', '/places', array(
+  register_rest_route( 'shareabouts/v1', '/places.json', array(
     'methods' => 'GET',
     'callback' => 'get_shareabouts_places',
   ) );

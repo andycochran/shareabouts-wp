@@ -19,3 +19,11 @@ function onMapClick(e) {
 }
 
 map.on('click', onMapClick);
+
+jQuery.ajax({
+    url: 'http://localhost/~andy/wp-shareabouts/wp-json/shareabouts/v1/places.json',
+    dataType: 'json',
+    success: function (response) {
+      var geojsonLayer = L.geoJson(response).addTo(map);
+    }
+});
