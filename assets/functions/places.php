@@ -31,7 +31,8 @@ function shareabouts_place_post_type() {
       // 'capability_type' => 'page',
       'hierarchical' => false,
       'supports' => array( 'title', 'editor', 'thumbnail'),
-      'register_meta_box_cb' => 'add_place_metabox'
+      'register_meta_box_cb' => 'add_place_metabox',
+      'show_in_rest' => true,
      )
   );
 }
@@ -78,3 +79,52 @@ function save_shareabouts_place_metabox($post_id, $post) {
   }
 }
 add_action('save_post', 'save_shareabouts_place_metabox', 1, 2);
+
+// Add the place LatLng to the REST API
+// function slug_register_latlng() {
+//   register_rest_field( 'shareabouts_place',
+//     'place_latlng',
+//     array(
+//       'get_callback'    => 'slug_get_latlng',
+//       'update_callback' => null,
+//       'schema'          => null,
+//     )
+//   );
+// }
+// add_action( 'rest_api_init', 'slug_register_latlng' );
+//
+// function slug_get_latlng( $object, $field_name, $request ) {
+//   return get_post_meta( $object[ 'id' ], $field_name, true );
+// }
+
+// Create custom places endpoint for WP REST API
+function get_shareabouts_places() {
+  $args = array(
+    'post_type'      => 'shareabouts_place',
+    'post_status'    => 'publish',
+    'posts_per_page' => -1,
+  );
+
+  $posts = get_posts($args);
+
+  if ( empty( $posts ) ) {
+    return [];
+  }
+
+  foreach ( $posts as $post ) {
+      $data[$post->ID]['LatLng'] = $post->place_latlng;
+      $data[$post->ID]['title'] = $post->post_title;
+      // $data[$post->ID]['content'] = $post->post_content;
+      $data[$post->ID]['date'] = $post->post_date;
+      $data[$post->ID]['permalink'] = get_permalink( $post->ID );
+  }
+
+  return rest_ensure_response( $data );
+}
+
+add_action( 'rest_api_init', function () {
+  register_rest_route( 'shareabouts/v1', '/places', array(
+    'methods' => 'GET',
+    'callback' => 'get_shareabouts_places',
+  ) );
+} );
