@@ -111,15 +111,29 @@ function get_shareabouts_places() {
     return [];
   }
 
+  $geojson = array(
+    'type'      => 'FeatureCollection',
+    'features'  => array()
+  );
+
   foreach ( $posts as $post ) {
-      $data[$post->ID]['LatLng'] = $post->place_latlng;
-      $data[$post->ID]['title'] = $post->post_title;
-      // $data[$post->ID]['content'] = $post->post_content;
-      $data[$post->ID]['date'] = $post->post_date;
-      $data[$post->ID]['permalink'] = get_permalink( $post->ID );
+    $feature = array(
+      'id' => $post->ID,
+      'type' => 'Feature',
+      'geometry' => array(
+          'type' => 'Point',
+          'coordinates' => array($post->place_latlng)
+      ),
+      'properties' => array(
+          'title' => $post->post_title,
+          'date' => $post->post_date,
+          'permalink' => get_permalink( $post->ID )
+      )
+    );
+    array_push($geojson['features'], $feature);
   }
 
-  return rest_ensure_response( $data );
+  return rest_ensure_response( $geojson );
 }
 
 add_action( 'rest_api_init', function () {
