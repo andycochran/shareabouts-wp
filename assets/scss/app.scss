@@ -78,36 +78,74 @@ html, body {
 #content {
   position: relative;
   z-index: 2;
-  // padding-top: $global-margin;
-  // padding-bottom: $global-margin;
+  display: none;
+  .content-visible & {
+    display: block;
+  }
   @include breakpoint(medium) {
     float: left;
     width: 50%;
     height: 100%;
-    overflow: auto;
+    overflow: visible;
     box-shadow: rem-calc(-6) 0 0 0 rgba(0,0,0,0.15);
   }
   @include breakpoint(large) {
     width: 40%;
   }
 }
+#post {
+  padding: $global-margin;
+  overflow: auto;
+  max-height: 100%;
+}
+
+#content-close-button {
+  background-color: $white;
+  padding: 0 $global-margin/2;
+  @include breakpoint(small only) {
+    top: auto;
+    right: auto;
+    bottom: 100%;
+    padding: 0 $global-margin;
+    left: $global-margin;
+  }
+  @include breakpoint(medium) {
+    right: 100%;
+    line-height: 1.5;
+
+    top: rem-calc(12);
+    // margin: 0 -0.325em 0 0;
+    padding: rem-calc(2) rem-calc(4) rem-calc(6) rem-calc(14);
+    border-radius: 0.325em 0 0 0.325em;
+    box-shadow: rem-calc(-6) rem-calc(6) 0 rgba(0,0,0,0.15);
+    font-family: "Helvetica Neue", Arial, Helvetica, serif;
+
+  }
+  small {
+    font-size: 0.5em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
 
 #map-container {
   position: relative;
   z-index: 1;
+  width: 100%;
   @include breakpoint(medium) {
     float: left;
-    width: 50%;
     height: 100%;
   }
-  @include breakpoint(large) {
-    width: 60%;
+  .content-visible & {
+    @include breakpoint(medium) { width: 50%; }
+    @include breakpoint(large) { width: 60%; }
   }
 }
 
 #map {
   position: relative;
   z-index: 2;
+  width: 100%;
   height: 500px;
   @include breakpoint(medium) {
     height: 100%;
@@ -119,6 +157,11 @@ html, body {
   width: 100%;
   position: relative;
   z-index: 2;
+  @include breakpoint(small only) {
+    .content-visible & {
+      display: none;
+    }
+  }
   @include breakpoint(medium) {
     width: auto;
     position: absolute;

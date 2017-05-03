@@ -2237,17 +2237,17 @@ select {
     background-image: none; }
 
 .is-invalid-input:not(:focus) {
-  border-color: #cc4b37;
-  background-color: #f9ecea; }
+  border-color: #df5656;
+  background-color: #fbeded; }
   .is-invalid-input:not(:focus)::-webkit-input-placeholder {
-    color: #cc4b37; }
+    color: #df5656; }
   .is-invalid-input:not(:focus):-ms-input-placeholder {
-    color: #cc4b37; }
+    color: #df5656; }
   .is-invalid-input:not(:focus)::placeholder {
-    color: #cc4b37; }
+    color: #df5656; }
 
 .is-invalid-label {
-  color: #cc4b37; }
+  color: #df5656; }
 
 .form-error {
   display: none;
@@ -2255,7 +2255,7 @@ select {
   margin-bottom: 1rem;
   font-size: 0.75rem;
   font-weight: bold;
-  color: #cc4b37; }
+  color: #df5656; }
   .form-error.is-visible {
     display: block; }
 
@@ -2315,11 +2315,11 @@ select {
       background-color: #cc8b00;
       color: #0a0a0a; }
   .button.alert {
-    background-color: #cc4b37;
-    color: #fefefe; }
+    background-color: #df5656;
+    color: #0a0a0a; }
     .button.alert:hover, .button.alert:focus {
-      background-color: #a53b2a;
-      color: #fefefe; }
+      background-color: #d02727;
+      color: #0a0a0a; }
   .button.hollow {
     border: 1px solid #1779ba;
     color: #1779ba; }
@@ -2353,11 +2353,11 @@ select {
         border-color: #805700;
         color: #805700; }
     .button.hollow.alert {
-      border: 1px solid #cc4b37;
-      color: #cc4b37; }
+      border: 1px solid #df5656;
+      color: #df5656; }
       .button.hollow.alert:hover, .button.hollow.alert:focus {
-        border-color: #67251a;
-        color: #67251a; }
+        border-color: #821919;
+        color: #821919; }
   .button.disabled, .button[disabled] {
     opacity: 0.25;
     cursor: not-allowed; }
@@ -2392,8 +2392,8 @@ select {
       opacity: 0.25;
       cursor: not-allowed; }
       .button.disabled.alert, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert, .button[disabled].alert:hover, .button[disabled].alert:focus {
-        background-color: #cc4b37;
-        color: #fefefe; }
+        background-color: #df5656;
+        color: #0a0a0a; }
   .button.dropdown::after {
     display: block;
     width: 0;
@@ -2419,7 +2419,7 @@ select {
   .button.dropdown.hollow.warning::after {
     border-top-color: #ffae00; }
   .button.dropdown.hollow.alert::after {
-    border-top-color: #cc4b37; }
+    border-top-color: #df5656; }
   .button.arrow-only::after {
     top: -0.1em;
     float: none;
@@ -2513,8 +2513,8 @@ select {
     background: #ffae00;
     color: #0a0a0a; }
   .badge.alert {
-    background: #cc4b37;
-    color: #fefefe; }
+    background: #df5656;
+    color: #0a0a0a; }
 
 .breadcrumbs {
   margin: 0 0 1rem 0;
@@ -2627,11 +2627,11 @@ select {
       background-color: #cc8b00;
       color: #0a0a0a; }
   .button-group.alert .button {
-    background-color: #cc4b37;
-    color: #fefefe; }
+    background-color: #df5656;
+    color: #0a0a0a; }
     .button-group.alert .button:hover, .button-group.alert .button:focus {
-      background-color: #a53b2a;
-      color: #fefefe; }
+      background-color: #d02727;
+      color: #0a0a0a; }
   .button-group.stacked .button, .button-group.stacked-for-small .button, .button-group.stacked-for-medium .button {
     width: 100%; }
     .button-group.stacked .button:last-child, .button-group.stacked-for-small .button:last-child, .button-group.stacked-for-medium .button:last-child {
@@ -2676,7 +2676,7 @@ select {
     background-color: #fff3d9;
     color: #0a0a0a; }
   .callout.alert {
-    background-color: #f7e4e1;
+    background-color: #fae6e6;
     color: #0a0a0a; }
   .callout.small {
     padding-top: 0.5rem;
@@ -2713,12 +2713,12 @@ select {
 
 .close-button {
   position: absolute;
-  color: #8a8a8a;
+  color: #df5656;
   cursor: pointer; }
   [data-whatinput='mouse'] .close-button {
     outline: 0; }
   .close-button:hover, .close-button:focus {
-    color: #0a0a0a; }
+    color: #c32525; }
   .close-button.small {
     right: 0.66rem;
     top: 0.33em;
@@ -3253,8 +3253,8 @@ select {
     background: #ffae00;
     color: #0a0a0a; }
   .label.alert {
-    background: #cc4b37;
-    color: #fefefe; }
+    background: #df5656;
+    color: #0a0a0a; }
 
 .media-object {
   display: block;
@@ -3634,7 +3634,7 @@ select {
   .progress.warning .progress-meter {
     background-color: #ffae00; }
   .progress.alert .progress-meter {
-    background-color: #cc4b37; }
+    background-color: #df5656; }
 
 .progress-meter {
   position: relative;

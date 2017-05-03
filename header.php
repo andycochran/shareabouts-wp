@@ -34,5 +34,3 @@
         </div>
       </div>
     </header>
-
-    <div id="site-body">

@@ -27,3 +27,8 @@ jQuery.ajax({
       var geojsonLayer = L.geoJson(response).addTo(map);
     }
 });
+
+jQuery('#content-close-button').click( function(){
+  jQuery('#site-body').removeClass('content-visible');
+  map.invalidateSize();
+});

@@ -54,7 +54,7 @@ $foundation-palette: (
   secondary: #767676,
   success: #3adb76,
   warning: #ffae00,
-  alert: #cc4b37,
+  alert: #df5656,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
@@ -316,8 +316,8 @@ $closebutton-size: (
   medium: 2em,
 );
 $closebutton-lineheight: 1;
-$closebutton-color: $dark-gray;
-$closebutton-color-hover: $black;
+$closebutton-color: get-color(alert);
+$closebutton-color-hover: darken($closebutton-color,15%);
 
 // 16. Drilldown
 // -------------
