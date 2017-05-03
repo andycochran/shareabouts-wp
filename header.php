@@ -26,10 +26,13 @@
   <body <?php body_class(); ?>>
 
     <header id="site-header">
-      <div class="row column expanded">
+      <div class="row expanded">
+        <div class="column medium-6">
           <a class="site-title shareabouts-font" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a>
           <span class="site-description"><?php bloginfo('description'); ?></span>
-          <!-- TODO: Navigation Menu -->
+        </div>
+        <div class="column medium-6">
+          <?php the_main_nav(); ?>
           <!-- TODO: User Menu -->
         </div>
       </div>

@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+<div id="site-body">
+
   <div class="row">
     <div class="columns">
 
@@ -25,5 +27,7 @@
 
     </div>
   </div>
+
+</div>
 
 <?php get_footer(); ?>
