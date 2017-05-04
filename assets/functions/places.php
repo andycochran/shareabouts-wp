@@ -30,7 +30,7 @@ function shareabouts_place_post_type() {
       'has_archive' => false,
       // 'capability_type' => 'page',
       'hierarchical' => false,
-      'supports' => array( 'title', 'editor', 'thumbnail'),
+      'supports' => array( 'title', 'editor', 'thumbnail', 'comments'),
       'register_meta_box_cb' => 'add_place_metabox',
       'show_in_rest' => true,
      )
