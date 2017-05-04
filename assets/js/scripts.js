@@ -20,8 +20,27 @@ if (jQuery("#map").length) {
     url: shareabouts.jsonurl,
     dataType: 'json',
     success: function success(response) {
-      var geojsonLayer = L.geoJson(response).addTo(map);
-      // var geojsonLayer = response;
+
+      var geojsonLayer = L.geoJson(response, {
+        style: function style(feature) {
+          return {
+            color: '#1779ba',
+            radius: 8,
+            fillOpacity: 0.5
+          };
+        },
+        pointToLayer: function pointToLayer(feature, latlng) {
+          return new L.CircleMarker(latlng);
+        },
+        onEachFeature: onEachFeature
+      });
+      map.addLayer(geojsonLayer);
+
+      function onEachFeature(feature, layer) {
+        layer.on('click', function (e) {
+          window.open(feature.properties.permalink, '_self');
+        });
+      }
     }
   });
 
