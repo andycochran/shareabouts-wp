@@ -11,7 +11,7 @@ var options = {
         duration: 500,
         render: function render($container) {
             $container.addClass('is-exiting');
-            // Foundation.Motion.animateOut( jQuery('#slider'), 'fade-out' );
+            Foundation.Motion.animateOut(jQuery('#post'), 'fade-out');
             smoothState.restartCSSAnimations();
         }
     },
@@ -20,7 +20,7 @@ var options = {
         render: function render($container, $newContent) {
             $container.removeClass('is-exiting');
             $container.html($newContent);
-            // Foundation.Motion.animateIn( jQuery('#slider'), 'hinge-in-from-middle-x' );
+            Foundation.Motion.animateIn(jQuery('#post'), 'fade-in');
             jQuery('#site-body').addClass('content-visible');
             map.invalidateSize();
         }
@@ -28,7 +28,7 @@ var options = {
 },
     smoothState = jQuery('#content').smoothState(options).data('smoothState');
 
-// The Map
+// If there's a map...
 if (jQuery("#map").length) {
 
     var map = L.map('map', {
@@ -64,7 +64,10 @@ if (jQuery("#map").length) {
 
             function onEachFeature(feature, layer) {
                 layer.on('click', function (e) {
-                    smoothState.load(feature.properties.permalink);
+                    var place_url = feature.properties.permalink;
+                    if (place_url != window.location) {
+                        smoothState.load(place_url);
+                    }
                 });
             }
         }
@@ -74,4 +77,4 @@ if (jQuery("#map").length) {
         jQuery('#site-body').removeClass('content-visible');
         map.invalidateSize();
     });
-}
+} // ...end of if there's a map.
