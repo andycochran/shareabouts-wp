@@ -2,7 +2,7 @@ jQuery(document).foundation();
 
 // smoothState
 var options = {
-        anchors: 'a',
+        anchors: 'a.ajax',
         prefetch: true,
         cacheLength: 2,
         onStart: {
