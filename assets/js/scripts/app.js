@@ -15,10 +15,11 @@ if ( jQuery( "#map" ).length ) {
     var popup = L.popup();
 
     jQuery.ajax({
-        url: 'http://localhost/~andy/wp-shareabouts/wp-json/shareabouts/v1/places.json',
+        url: shareabouts.jsonurl,
         dataType: 'json',
         success: function (response) {
           var geojsonLayer = L.geoJson(response).addTo(map);
+          // var geojsonLayer = response;
         }
     });
 
