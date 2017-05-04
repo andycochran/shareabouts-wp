@@ -1,5 +1,31 @@
 jQuery(document).foundation();
 
+// smoothState
+var options = {
+    anchors: 'a',
+    prefetch: true,
+    cacheLength: 2,
+    onStart: {
+        duration: 500,
+        render: function ($container) {
+            $container.addClass('is-exiting');
+            // Foundation.Motion.animateOut( jQuery('#slider'), 'fade-out' );
+            smoothState.restartCSSAnimations();
+        }
+    },
+    onReady: {
+        duration: 0,
+        render: function ($container, $newContent) {
+            $container.removeClass('is-exiting');
+            $container.html($newContent);
+            // Foundation.Motion.animateIn( jQuery('#slider'), 'hinge-in-from-middle-x' );
+            jQuery('#site-body').addClass('content-visible');
+            map.invalidateSize();
+        }
+    }
+},
+smoothState = jQuery('#content').smoothState(options).data('smoothState');
+
 // The Map
 if ( jQuery( "#map" ).length ) {
 
@@ -35,44 +61,16 @@ if ( jQuery( "#map" ).length ) {
           map.addLayer(geojsonLayer);
 
           function onEachFeature(feature, layer) {
-            layer.on('click', function (e) {
-              window.open(feature.properties.permalink, '_self');
-            });
+              layer.on('click', function (e) {
+                  smoothState.load(feature.properties.permalink);
+              });
           }
 
         }
     });
 
-    jQuery('#content-close-button').click( function(){
+    jQuery(document).on("click", '#content-close-button', function(event) {
         jQuery('#site-body').removeClass('content-visible');
         map.invalidateSize();
     });
-
 }
-
-// smoothState
-jQuery(function(){
-  'use strict';
-  var options = {
-    anchors: 'a',
-    prefetch: true,
-    cacheLength: 2,
-    onStart: {
-      duration: 500,
-      render: function ($container) {
-        $container.addClass('is-exiting');
-        Foundation.Motion.animateOut( jQuery('#slider'), 'fade-out' );
-        smoothState.restartCSSAnimations();
-      }
-    },
-    onReady: {
-      duration: 0,
-      render: function ($container, $newContent) {
-        $container.removeClass('is-exiting');
-        $container.html($newContent);
-        Foundation.Motion.animateIn( jQuery('#slider'), 'hinge-in-from-middle-x' );
-      }
-    }
-  },
-  smoothState = jQuery('#site-body').smoothState(options).data('smoothState');
-});
