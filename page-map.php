@@ -19,6 +19,9 @@
       <section class="post-content">
         <?php the_content(); ?>
       </section>
+      <div class="post-comments">
+        <?php comments_template(); ?>
+      </div>
     </article>
     <?php endwhile; endif; ?>
   </div>

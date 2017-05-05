@@ -22,3 +22,11 @@ function site_scripts() {
 
 }
 add_action('wp_enqueue_scripts', 'site_scripts', 999);
+
+
+function comments_js(){
+  if ( is_page_template( 'page-map.php' ) || (!is_admin()) && comments_open() && get_option('thread_comments') ) {
+    wp_enqueue_script( 'comment-reply' );
+  }
+}
+add_action('wp_print_scripts', 'comments_js');
