@@ -32,8 +32,18 @@
           <span class="site-description"><?php bloginfo('description'); ?></span>
         </div>
         <div class="column medium-6">
+
           <?php the_main_nav(); ?>
-          <!-- TODO: User Menu -->
+
+          <?php
+          global $current_user;
+          get_currentuserinfo();
+          if ( is_user_logged_in() ) {
+            echo $current_user->display_name . "\n";
+          }
+          wp_loginout();
+          ?>
+
         </div>
       </div>
     </header>
