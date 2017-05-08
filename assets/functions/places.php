@@ -141,9 +141,9 @@ function get_shareabouts_places() {
   return rest_ensure_response( $geojson );
 }
 
-add_action( 'rest_api_init', function () {
+add_action( 'rest_api_init', function() {
   register_rest_route( 'shareabouts/v1', '/places.json', array(
     'methods' => 'GET',
     'callback' => 'get_shareabouts_places',
-  ) );
-} );
+  ));
+});

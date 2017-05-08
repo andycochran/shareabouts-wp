@@ -15,9 +15,6 @@
       </header>
       <section class="post-content">
         <?php the_content(); ?>
-        <form>
-          <!-- TODO: create a form to publish a shareabouts_place through the WP API -->
-        </form>
       </section>
     </article>
     <?php endwhile; endif; ?>

@@ -8,6 +8,18 @@ function site_scripts() {
   wp_enqueue_script( 'leaflet-js', get_template_directory_uri() . '/assets/js/leaflet.js', array(), '', true );
   // wp_enqueue_script( 'site-js', get_template_directory_uri() . '/assets/js/scripts.js', array(), '', true );
 
+  // Register, localize, & enqueue place submitter scripts
+  wp_register_script( 'place-submitter', get_template_directory_uri() . '/assets/js/place-submitter.js', array( 'jquery' ), '', true );
+  $translation_array = array(
+    'root' => esc_url_raw( rest_url() ),
+    'nonce' => wp_create_nonce( 'wp_rest' ),
+    'success' => __( 'Thanks for your submission!', 'shareabouts' ),
+    'failure' => __( 'Your submission could not be processed.', 'shareabouts' ),
+    'current_user_id' => get_current_user_id()
+  );
+  wp_localize_script( 'place-submitter', PLACE_SUBMITTER, $translation_array );
+  wp_enqueue_script( 'place-submitter' );
+
   // Register, localize, & enqueue the site scripts
   wp_register_script( 'site-js', get_template_directory_uri() . '/assets/js/scripts.js', array(), '', true );
   $translation_array = array(
@@ -15,7 +27,6 @@ function site_scripts() {
   );
   wp_localize_script( 'site-js', 'shareabouts', $translation_array );
   wp_enqueue_script( 'site-js' );
-
 
   // Register main stylesheet
   wp_enqueue_style( 'site-css', get_template_directory_uri() . '/assets/css/app.min.css', array(), '', 'all' );
