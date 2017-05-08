@@ -1,3 +1,5 @@
+<?php /* Template Name: Shareabouts Add Place Form */ ?>
+
 <?php get_header(); ?>
 
 <div id="site-body" class="content-visible">
@@ -13,10 +15,10 @@
       </header>
       <section class="post-content">
         <?php the_content(); ?>
+        <form>
+          <!-- TODO: create a form to publish a shareabouts_place through the WP API -->
+        </form>
       </section>
-      <div class="post-comments">
-        <?php comments_template(); ?>
-      </div>
     </article>
     <?php endwhile; endif; ?>
   </div>

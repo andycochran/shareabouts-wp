@@ -4,10 +4,7 @@
 
 <div id="site-body" class="content-visible">
 
-  <div id="map-container">
-    <div id="map"></div>
-    <button id="add-place" class="button large"><strong>Add Place</strong><!-- TODO: make text configurable --></button>
-  </div>
+  <?php get_template_part( 'shareabouts_map' ); ?>
 
   <div id="content">
     <button id="content-close-button" class="close-button" aria-label="close content" type="button"><span aria-hidden="true">&times;<small class="show-for-small-only">&nbsp;Close</small></span></button>
