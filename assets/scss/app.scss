@@ -227,3 +227,93 @@ html, body {
 [type=submit] {
   @extend .button;
 }
+
+
+/*--------------------------------------------------
+  Center Point (new point icon)
+--------------------------------------------------*/
+
+#centerpoint {
+  display: none;
+
+  &.newpin {
+    display: inline-block;
+    overflow: visible;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+    z-index: 11;
+    width: 47px;
+    height: 47px;
+    margin: -44px 0 0 -12px;
+
+    .x {
+      display: block;
+      position: absolute;
+      width: 18px;
+      height: 12px;
+      background: transparent url(../images/marker-x.png) 0 0 no-repeat scroll;
+      left: 4px;
+      top: 37px;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    &:hover .x,
+    &.dragging .x {
+      opacity: 1;
+    }
+
+    .shadow {
+      display: block;
+      height: 47px;
+      width: 47px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: transparent url(../images/marker-shadow.png) 0 3px no-repeat scroll;
+      transition: opacity 0s, background-position 0.3s ease;
+    }
+    &:hover .shadow,
+    &.dragging .shadow {
+      opacity: 0.2;
+      background-image:
+        url(../images/marker-shadow.png),
+        url(../images/marker-shadow.png),
+        url(../images/marker-shadow.png),
+        url(../images/marker-shadow.png),
+        url(../images/marker-shadow.png),
+        url(../images/marker-shadow.png),
+        url(../images/marker-shadow.png),
+        url(../images/marker-shadow.png),
+        url(../images/marker-shadow.png)
+        ;
+      background-position:
+        0px -3px,
+        3px -3px,
+        6px -3px,
+        0px -6px,
+        3px -6px,
+        6px -6px,
+        0px -9px,
+        3px -9px,
+        6px -9px
+      ;
+    }
+
+    .marker {
+      display: block;
+      width: 25px;
+      height: 41px;
+      background: transparent url(../images/marker-plus.png) 0 0 no-repeat scroll;
+      position: relative;
+      top: 3px;
+      transition: top 0.3s ease;
+    }
+    &:hover .marker,
+    &.dragging .marker {
+      top: -20px;
+    }
+
+  }
+}

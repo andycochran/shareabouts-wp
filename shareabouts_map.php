@@ -21,5 +21,5 @@ if ( $add_place_page->have_posts() ) {
   <a href="<?php echo $add_place_permalink; ?>" id="add-place" class="button large smoothstate<?php if(is_page_template('page-add_shareabouts_place.php')){ echo ' hide'; } ?>"><strong>Add Place</strong><!-- TODO: make text configurable --></a>
     <?php
   } ?>
-  <!-- TODO: add #centerpoint marker -->
+  <div id="centerpoint" class="<?php if(is_page_template('page-add_shareabouts_place.php')){ echo 'newpin'; } ?>"><span class="shadow"></span><span class="x"></span><span class="marker"></span></div>
 </div>

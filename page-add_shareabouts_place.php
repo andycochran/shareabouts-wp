@@ -26,11 +26,10 @@
               <label for="place-submission-title"><?php _e( 'Title', 'shareabouts' ); ?></label>
               <input type="text" name="place-submission-title" id="place-submission-title" required aria-required="true">
 
-              <label for="place-submission-excerpt"><?php _e( 'Excerpt', 'shareabouts' ); ?></label>
-              <textarea rows="2" cols="20" name="place-submission-excerpt" id="place-submission-excerpt" required aria-required="true"></textarea>
-
               <label for="place-submission-content"><?php _e( 'Content', 'shareabouts' ); ?></label>
-              <textarea rows="10" cols="20" name="place-submission-content" id="place-submission-content"></textarea>
+              <textarea rows="10" cols="20" name="place-submission-content" id="place-submission-content" required aria-required="true"></textarea>
+
+              <input type="text" name="place-submission-location" id="place-submission-location" required aria-required="true" placeholder="Drag the map to your location.">
 
               <input type="submit" value="<?php esc_attr_e( 'Submit', 'shareabouts'); ?>">
 

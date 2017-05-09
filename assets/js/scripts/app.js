@@ -72,17 +72,31 @@ if ( jQuery( "#map" ).length ) {
         }
     });
 
-    jQuery(document).on("click", '#content-close-button', function(event) {
+    jQuery(document).on('click', '#content-close-button', function(event) {
         jQuery('#site-body').removeClass('content-visible');
         map.invalidateSize();
         jQuery('#add-place').removeClass('hide');
+        jQuery('#centerpoint').removeClass('newpin');
     });
 
     jQuery(document).on("click", '#add-place', function(event) {
         event.preventDefault();
         var addPlaceURL = jQuery(this).attr('href');
         smoothState.load(addPlaceURL);
-        Foundation.Motion.animateOut( jQuery(this), 'slide-out-down' );
+        jQuery(this).addClass('hide');
+        jQuery('#centerpoint').addClass('newpin');
+        Foundation.Motion.animateIn( jQuery('#centerpoint'), 'fade-in' );
     });
+
+    map.on('movestart', function(e) {
+        jQuery('#centerpoint').addClass('dragging');
+    });
+    map.on('moveend', function(e) {
+        jQuery('#centerpoint').removeClass('dragging');
+        var mapCenter = map.getCenter();
+        mapCenter = mapCenter.lat + ", " + mapCenter.lng;
+        jQuery('#place-submission-location').val( mapCenter );
+    });
+
 
 } // ...end of if there's a map.

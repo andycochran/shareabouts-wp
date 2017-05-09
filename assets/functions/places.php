@@ -81,21 +81,25 @@ function save_shareabouts_place_metabox($post_id, $post) {
 add_action('save_post', 'save_shareabouts_place_metabox', 1, 2);
 
 // Add the place LatLng to the REST API
-// function slug_register_latlng() {
-//   register_rest_field( 'shareabouts_place',
-//     'place_latlng',
-//     array(
-//       'get_callback'    => 'slug_get_latlng',
-//       'update_callback' => null,
-//       'schema'          => null,
-//     )
-//   );
-// }
-// add_action( 'rest_api_init', 'slug_register_latlng' );
-//
-// function slug_get_latlng( $object, $field_name, $request ) {
-//   return get_post_meta( $object[ 'id' ], $field_name, true );
-// }
+function register_shareabouts_latlng() {
+  register_rest_field( 'shareabouts_place',
+    'place_latlng',
+    array(
+      'get_callback'    => 'get_shareabouts_latlng',
+      'update_callback' => 'update_shareabouts_latlng',
+      'schema'          => null,
+    )
+  );
+}
+add_action( 'rest_api_init', 'register_shareabouts_latlng' );
+
+function get_shareabouts_latlng( $object, $field_name, $request ) {
+  return get_post_meta( $object[ 'id' ], $field_name, true );
+}
+function update_shareabouts_latlng( $value, $post ) {
+    $value = sanitize_text_field( $value );
+    return update_post_meta( $post->ID, 'place_latlng', wp_slash( $value ) );
+}
 
 // Create custom places endpoint for WP REST API
 function get_shareabouts_places() {

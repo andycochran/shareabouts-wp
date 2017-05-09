@@ -12,10 +12,7 @@ function site_scripts() {
   wp_register_script( 'place-submitter', get_template_directory_uri() . '/assets/js/place-submitter.js', array( 'jquery' ), '', true );
   $translation_array = array(
     'root' => esc_url_raw( rest_url() ),
-    'nonce' => wp_create_nonce( 'wp_rest' ),
-    'success' => __( 'Thanks for your submission!', 'shareabouts' ),
-    'failure' => __( 'Your submission could not be processed.', 'shareabouts' ),
-    'current_user_id' => get_current_user_id()
+    'nonce' => wp_create_nonce( 'wp_rest' )
   );
   wp_localize_script( 'place-submitter', PLACE_SUBMITTER, $translation_array );
   wp_enqueue_script( 'place-submitter' );
