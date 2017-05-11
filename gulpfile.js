@@ -42,11 +42,19 @@ gulp.task('leaflet', function() {
     .pipe(gulp.dest('./assets/js'))
 });
 
+// Copy What-Input
+gulp.task('what-input', function() {
+  return gulp.src([
+      './bower_components/what-input/dist/what-input.min.js'
+    ])
+    .pipe(gulp.dest('./assets/js'))
+});
+
 // Concat, minify Foundation's JavaScript
 gulp.task('foundation-js', function() {
   return gulp.src([
       // Required if you need any components
-      './bower_components/what-input/what-input.js',
+      // './bower_components/what-input/dist/what-input.min.js',
       './bower_components/foundation-sites/js/foundation.core.js',
       './bower_components/foundation-sites/js/foundation.util.*.js',
 
@@ -87,6 +95,7 @@ gulp.task('default', function() {
   gulp.start('scripts');
   gulp.start('foundation-js');
   gulp.start('leaflet');
+  gulp.start('what-input');
 });
 
 // Watch files for changes
