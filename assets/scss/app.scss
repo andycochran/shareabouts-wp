@@ -16,7 +16,7 @@
   Global site layout
 --------------------------------------------------*/
 
-$site-header-height: 5.75rem;
+$site-header-height: 5rem;
 $site-footer-height: 3rem;
 
 body {
@@ -31,13 +31,80 @@ html, body {
 }
 
 #site-header {
-  padding: $global-margin 0;
+  padding: $global-margin ;
   box-shadow: 0 rem-calc(6) 0 0 rgba(0,0,0,0.15);
   position: relative;
   z-index: 2;
   background-color: $light-gray;
   @include breakpoint(medium) {
     height: $site-header-height;
+  }
+  @include breakpoint(large) {
+    display: table;
+    width: 100%;
+  }
+}
+
+#site-header-primary {
+  padding-right: 24px; // match hamburger width
+  margin-right: $global-margin;
+  position: relative;
+  @include breakpoint(large) {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+#site-header-secondary {
+  @include breakpoint(medium) {
+    background-color: lighten($light-gray,5%);
+    max-width: 20rem;
+    margin: 0 0 0 auto;
+    padding: $global-margin;
+    box-shadow: rem-calc(-6) rem-calc(6) 0 0 rgba(0,0,0,0.15);
+  }
+  @include breakpoint(large) {
+    background-color: transparent;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .menu {
+    @include breakpoint(large) {
+      float: right;
+    }
+  }
+}
+#user-menu {
+  @include breakpoint(large) {
+    float: right;
+    margin-left: $global-margin;
+    .avatar {
+      width: 3rem;
+    }
+  }
+}
+
+$hamburger-height: 20px; // must be set in pixels
+#site-header-toggle-button {
+  @include hamburger(
+    $color: $dark-gray,
+    $color-hover: $black,
+    $width: 24px,
+    $height: $hamburger-height,
+    $weight: 3px,
+    $bars: 3
+  );
+  position: absolute;
+  top: 50%;
+  right: -$global-margin;
+  margin-top: $hamburger-height/-2;
+  @include breakpoint(large) {
+    display: none;
   }
 }
 
@@ -180,6 +247,7 @@ html, body {
 .site-title {
   display: inline-block;
   font-size: rem-calc(24);
+  line-height: 1.2;
   @include breakpoint(medium) {
     font-size: rem-calc(40);
   }

@@ -2740,7 +2740,7 @@ select {
       outline: 0; }
   .menu > li > a {
     display: block;
-    padding: 0.7rem 1rem;
+    padding: 1rem 1rem;
     line-height: 1; }
   .menu input,
   .menu select,
@@ -2835,7 +2835,7 @@ select {
 .menu-text {
   padding-top: 0;
   padding-bottom: 0;
-  padding: 0.7rem 1rem;
+  padding: 1rem 1rem;
   font-weight: bold;
   line-height: 1;
   color: inherit; }
