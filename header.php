@@ -39,9 +39,12 @@
             global $current_user;
             get_currentuserinfo();
             if ( is_user_logged_in() ) {
-              echo get_avatar( $current_user->user_email, 32 );
-              echo '<div class="hide-for-large">';
-                echo $current_user->display_name;
+              echo '<button data-toggle="user-dropdown" class="float-right">' . get_avatar( $current_user->user_email, 32 ) . '</button>';
+              echo '<div id="user-dropdown" class="dropdown-pane bottom text-center" data-dropdown data-hover="true" data-hover-pane="true">';
+                echo '<p>Signed in as <strong>' . $current_user->display_name . '</strong></p>';
+                if ( current_user_can('administrator') ) {
+                  echo '<p><a href="' . admin_url() . '">WordPress Admin</a></p>';
+                }
                 wp_loginout();
               echo '</div>';
             } else {
