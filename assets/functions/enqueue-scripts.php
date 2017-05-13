@@ -7,7 +7,16 @@ function site_scripts() {
   wp_enqueue_script( 'foundation-js', get_template_directory_uri() . '/assets/js/foundation.min.js', array( 'jquery' ), '6.2', true );
   wp_enqueue_script( 'smoothstate-js', get_template_directory_uri() . '/assets/js/jquery.smoothState.min.js', array( 'jquery' ), '', true );
   wp_enqueue_script( 'leaflet-js', get_template_directory_uri() . '/assets/js/leaflet.js', array(), '', true );
-  // wp_enqueue_script( 'site-js', get_template_directory_uri() . '/assets/js/scripts.js', array(), '', true );
+
+
+  // Register, localize, & enqueue user registration scripts
+  wp_register_script( 'ajax-login-register-script', get_template_directory_uri() . '/assets/js/user-login.js', array( 'jquery' ), '', true );
+  $translation_array = array(
+    'ajaxurl' => admin_url( 'admin-ajax.php' )
+  );
+  wp_localize_script( 'ajax-login-register-script', 'ptajax', $translation_array );
+  wp_enqueue_script( 'ajax-login-register-script' );
+
 
   // Register, localize, & enqueue place submitter scripts
   wp_register_script( 'place-submitter', get_template_directory_uri() . '/assets/js/place-submitter.js', array( 'jquery' ), '', true );
@@ -18,6 +27,7 @@ function site_scripts() {
   wp_localize_script( 'place-submitter', PLACE_SUBMITTER, $translation_array );
   wp_enqueue_script( 'place-submitter' );
 
+
   // Register, localize, & enqueue the site scripts
   wp_register_script( 'site-js', get_template_directory_uri() . '/assets/js/scripts.js', array(), '', true );
   $translation_array = array(
@@ -25,6 +35,7 @@ function site_scripts() {
   );
   wp_localize_script( 'site-js', 'shareabouts', $translation_array );
   wp_enqueue_script( 'site-js' );
+
 
   // Register main stylesheet
   wp_enqueue_style( 'site-css', get_template_directory_uri() . '/assets/css/app.min.css', array(), '', 'all' );

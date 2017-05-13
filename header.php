@@ -48,7 +48,7 @@
                 wp_loginout();
               echo '</div>';
             } else {
-              ?><ul class="menu"><li><?php wp_loginout(); ?></li></ul><?php
+              ?><ul class="menu"><li><a data-open="pt-user-modal"><?php _e('Sign in', 'shareabouts'); ?></a></li></ul><?php
             }
             ?>
           </div>

@@ -4616,6 +4616,9 @@ body {
 .colophon .shareabouts-font {
   font-size: 1.5em; }
 
+.text-inline-block {
+  display: inline-block; }
+
 /*--------------------------------------------------
   Comments & Forms
 --------------------------------------------------*/
