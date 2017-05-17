@@ -18,8 +18,15 @@ if ( $add_place_page->have_posts() ) {
 
 <div id="map-container">
   <div id="map"></div><?php if ( isset($add_place_permalink) ) { ?>
-  <a href="<?php echo $add_place_permalink; ?>" id="add-place" class="button large smoothstate<?php if(is_page_template('page-add_shareabouts_place.php')){ echo ' hide'; } ?>"><strong>Add a place</strong><!-- TODO: make text configurable --></a>
-    <?php
+  <a href="<?php echo $add_place_permalink; ?>" id="add-place" class="button large smoothstate<?php
+    if ( is_page_template('page-add_shareabouts_place.php') ) {
+      echo ' hide';
+    } ?>"><strong><?php
+    if (get_option('add_place_button')) {
+      echo esc_attr( get_option('add_place_button') );
+    } else {
+      _e('Add a place', 'shareabouts');
+    } ?></strong></a><?php
   } ?>
   <div id="centerpoint" class="<?php if(is_page_template('page-add_shareabouts_place.php')){ echo 'newpin'; } ?>"><span class="shadow"></span><span class="x"></span><span class="marker"></span></div>
 </div>

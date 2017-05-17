@@ -31,7 +31,13 @@
 
               <input type="text" name="place-submission-location" id="place-submission-location" required aria-required="true" placeholder="Drag the map to your location.">
 
-              <input type="submit" value="<?php esc_attr_e( 'Submit', 'shareabouts'); ?>">
+              <input type="submit" value="<?php
+                if (get_option('submit_place_button')) {
+                  echo esc_attr( get_option('submit_place_button') );
+                } else {
+                  esc_attr_e( 'Submit place', 'shareabouts');
+                }
+               ?>">
 
             </form>
             <?php
