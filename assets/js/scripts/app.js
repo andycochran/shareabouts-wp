@@ -84,6 +84,7 @@ if ( jQuery( "#map" ).length ) {
                   selected.bringToFront();
                   selected.setStyle(selectedMarkerStyle);
 
+                  addingPlace(false);
               });
               if ( place_url == window.location ) {
                   layer.setStyle(selectedMarkerStyle);
@@ -94,6 +95,16 @@ if ( jQuery( "#map" ).length ) {
         }
     });
 
+    function addingPlace(adding) {
+        if ( adding == true ) {
+            jQuery('#add-place').addClass('hide');
+            jQuery('#centerpoint').addClass('newpin');
+        } else {
+            jQuery('#add-place').removeClass('hide');
+            jQuery('#centerpoint').removeClass('newpin');
+        }
+    }
+
     jQuery(document).on('click', '#content-close-button', function(event) {
         // TODO: Add baseURL to history when content panel is closed
         // window.history.pushState({'href':shareabouts.homeurl},'', shareabouts.homeurl);
@@ -102,8 +113,7 @@ if ( jQuery( "#map" ).length ) {
         }
         jQuery('#site-body').removeClass('content-visible');
         map.invalidateSize();
-        jQuery('#add-place').removeClass('hide');
-        jQuery('#centerpoint').removeClass('newpin');
+        addingPlace(false);
     });
 
     jQuery(document).on("click", '#add-place', function(event) {
@@ -113,8 +123,7 @@ if ( jQuery( "#map" ).length ) {
         }
         var addPlaceURL = jQuery(this).attr('href');
         smoothState.load(addPlaceURL);
-        jQuery(this).addClass('hide');
-        jQuery('#centerpoint').addClass('newpin');
+        addingPlace(true);
         Foundation.Motion.animateIn( jQuery('#centerpoint'), 'fade-in' );
     });
 
