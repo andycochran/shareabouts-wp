@@ -37,7 +37,9 @@
             <?php
         } else {
             // the user is not logged in or cannot edit places
-            echo sprintf( '<a href="%1s">%2s</a>', esc_url( wp_login_url() ), __( 'Log in', 'shareabouts' ) );
+            ?>
+            <a data-open="pt-user-modal" class="button large expanded"><strong><?php _e('Sign in to add a place', 'shareabouts'); ?></strong></a>
+            <?php
         }
 
         ?>
