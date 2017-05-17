@@ -41,6 +41,21 @@ if (jQuery("#map").length) {
     }).addTo(map);
 
     var popup = L.popup();
+    var selected;
+    var markerStyle = {
+        color: '#1779ba',
+        weight: 4,
+        radius: 8,
+        fillColor: '#1779ba',
+        fillOpacity: 0.5
+    };
+    var selectedMarkerStyle = {
+        color: '#dd0000',
+        weight: 5,
+        radius: 10,
+        fillColor: '#eeeeee',
+        fillOpacity: 1
+    };
 
     jQuery.ajax({
         url: shareabouts.jsonurl,
@@ -48,12 +63,8 @@ if (jQuery("#map").length) {
         success: function success(response) {
 
             var geojsonLayer = L.geoJson(response, {
-                style: function style(feature) {
-                    return {
-                        color: '#1779ba',
-                        radius: 8,
-                        fillOpacity: 0.5
-                    };
+                style: function style() {
+                    return markerStyle;
                 },
                 pointToLayer: function pointToLayer(feature, latlng) {
                     return new L.CircleMarker(latlng);
@@ -63,17 +74,31 @@ if (jQuery("#map").length) {
             map.addLayer(geojsonLayer);
 
             function onEachFeature(feature, layer) {
+                var place_url = feature.properties.permalink;
                 layer.on('click', function (e) {
-                    var place_url = feature.properties.permalink;
-                    if (place_url != window.location) {
-                        smoothState.load(place_url);
+                    smoothState.load(place_url);
+
+                    if (selected) {
+                        geojsonLayer.resetStyle(selected);
                     }
+                    selected = e.target;
+                    selected.bringToFront();
+                    selected.setStyle(selectedMarkerStyle);
                 });
+                if (place_url == window.location) {
+                    layer.setStyle(selectedMarkerStyle);
+                    selected = layer;
+                }
             }
         }
     });
 
     jQuery(document).on('click', '#content-close-button', function (event) {
+        // TODO: Add baseURL to history when content panel is closed
+        // window.history.pushState({'href':shareabouts.homeurl},'', shareabouts.homeurl);
+        if (selected) {
+            selected.setStyle(markerStyle);
+        }
         jQuery('#site-body').removeClass('content-visible');
         map.invalidateSize();
         jQuery('#add-place').removeClass('hide');
@@ -82,6 +107,9 @@ if (jQuery("#map").length) {
 
     jQuery(document).on("click", '#add-place', function (event) {
         event.preventDefault();
+        if (selected) {
+            selected.setStyle(markerStyle);
+        }
         var addPlaceURL = jQuery(this).attr('href');
         smoothState.load(addPlaceURL);
         jQuery(this).addClass('hide');

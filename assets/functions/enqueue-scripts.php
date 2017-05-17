@@ -31,7 +31,8 @@ function site_scripts() {
   // Register, localize, & enqueue the site scripts
   wp_register_script( 'site-js', get_template_directory_uri() . '/assets/js/scripts.js', array(), '', true );
   $translation_array = array(
-    'jsonurl' => home_url( '/wp-json/shareabouts/v1/places.json' )
+    'jsonurl' => home_url( '/wp-json/shareabouts/v1/places.json' ),
+    'homeurl' => home_url( '/' )
   );
   wp_localize_script( 'site-js', 'shareabouts', $translation_array );
   wp_enqueue_script( 'site-js' );
