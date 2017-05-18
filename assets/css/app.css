@@ -4619,6 +4619,33 @@ body {
 .text-inline-block {
   display: inline-block; }
 
+.button--clear {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 1rem 0;
+  padding: 0.85em 1em;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #fefefe;
+  color: #fefefe;
+  color: #8a8a8a; }
+  [data-whatinput='mouse'] .button--clear {
+    outline: 0; }
+  .button--clear, .button--clear:hover, .button--clear:focus {
+    background-color: transparent; }
+  .button--clear:hover, .button--clear:focus {
+    border-color: #7f7f7f;
+    color: #7f7f7f; }
+  .button--clear:hover {
+    color: #1779ba;
+    border-color: transparent; }
+
 /*--------------------------------------------------
   Comments & Forms
 --------------------------------------------------*/

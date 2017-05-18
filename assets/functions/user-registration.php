@@ -21,7 +21,8 @@ function pt_login_register_modal() {
 
           <input type="hidden" name="action" value="pt_login_member">
 
-          <button class="button" data-loading-text="<?php _e('Loading...', 'shareabouts') ?>" type="submit"><?php _e('Sign in', 'shareabouts'); ?></button> <a class="alignright" href="#pt-reset-password"><?php _e('Lost Password?', 'shareabouts') ?></a>
+          <button class="button" data-loading-text="<?php _e('Loading...', 'shareabouts') ?>" type="submit"><?php _e('Sign in', 'shareabouts'); ?></button>
+          <a class="button--clear float-right" href="#pt-reset-password"><?php _e('Lost Password?', 'shareabouts') ?></a>
 
           <?php wp_nonce_field( 'ajax-login-nonce', 'login-security' ); ?>
         </form>

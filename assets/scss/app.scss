@@ -292,6 +292,19 @@ $hamburger-height: 20px; // must be set in pixels
   display: inline-block;
 }
 
+.button--clear {
+  @include button(
+    $background: $white,
+    $background-hover: $white,
+    $style: hollow
+  );
+  color: $dark-gray;
+  &:hover{
+    color: $primary-color;
+    border-color: transparent;
+  }
+}
+
 
 /*--------------------------------------------------
   Comments & Forms
