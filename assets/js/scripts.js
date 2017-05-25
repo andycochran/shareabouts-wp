@@ -45,6 +45,7 @@ if (jQuery("#map").length) {
     }).setView(shareabouts.mapDefaultCenter, shareabouts.mapDefaultZoom);
 
     L.tileLayer('http://tile-c.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        minZoom: 4,
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
