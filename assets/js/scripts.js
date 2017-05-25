@@ -42,7 +42,7 @@ if (jQuery("#map").length) {
 
     var map = L.map('map', {
         scrollWheelZoom: false
-    }).setView([38.2431627, -85.7567134], 12);
+    }).setView(shareabouts.mapDefaultCenter, shareabouts.mapDefaultZoom);
 
     L.tileLayer('http://tile-c.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         maxZoom: 19,
